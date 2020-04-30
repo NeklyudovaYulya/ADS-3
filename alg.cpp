@@ -4,7 +4,7 @@
 
  using namespace std;
  
- int setPrioritet(char ch)
+ int getPriority(char ch)
  {
     switch (ch)
     {
@@ -21,16 +21,16 @@
  string infx2pstfx(string inf)
 {
     TStack<char> stack;
-    string outof = "";
+    string outOf = "";
     for (int i = 0; i < inf.size(); i++)
     {
         char ch = inf[i];
-        int prioritet = setPrioritet(ch);
+        int priority = getPriority(ch);
 
-        if (prioritet == -1)
-            outof.append( string(1,ch) );
+        if (priority == -1)
+            outOf.append( string(1,ch) );
         else
-            if( stack.isEmpty() || prioritet == 0 || prioritet > setPrioritet( stack.get()))
+            if( stack.isEmpty() || priority == 0 || priority > getPriority( stack.get()))
                 stack.push(ch);
             else
             {
@@ -40,7 +40,7 @@
                         char lastStackl = stack.get();
                         stack.pop();
                         if (lastStackl != '(')
-                            outof.append(string(1,lastStackl));
+                            outOf.append(string(1,lastStackl));
                         else
                             break;
                             }
@@ -50,8 +50,8 @@
                     {
                         char lastStackl = stack.get();
                         stack.pop();
-                        if (setPrioritet(lastStackl) >= prioritet)
-                            outof.append(string(1,lastStackl));
+                        if (getPriority(lastStackl) >= priority)
+                            outOf.append(string(1,lastStackl));
                     }
                     stack.push(ch);
                 }
@@ -61,9 +61,9 @@
     {
         char lastStackl = stack.get();
         stack.pop();
-        outof.append(string(1,lastStackl));
+        outOf.append(string(1,lastStackl));
     }
-    return outof;
+    return outOf;
 }
 
 int calculate(int num1, int num2, char operation)
@@ -84,9 +84,9 @@ int eval(string pst)
     for (int i = 0; i < pst.size(); i++)
     
         char ch = pst[i];
-        int prioritet = setPrioritet(ch);
+        int priority = getPriority(ch);
    
-        if ( prioritet == -1)
+        if ( priority == -1)
             stack.push(ch - 48);
         else
         {
