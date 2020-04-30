@@ -4,9 +4,9 @@
 
  using namespace std;
  
- int prioritet(char c)
+ int prioritet(char ch)
  {
-    switch (c)
+    switch (ch)
     {
     case '(': return 0;
     case ')': return 1;
@@ -24,17 +24,17 @@
     string outof = "";
     for (int i = 0; i < inf.size(); i++)
     {
-        char c = inf[i];
-        int p = prioritet(c);
+        char ch = inf[i];
+        int p = prioritet(ch);
 
         if (p == -1)
-            outof.append( string(1,c) );
+            outof.append( string(1,ch) );
         else
             if( stack.isEmpty() || p == 0 || p > prioritet( stack.get()))
-                stack.push(c);
+                stack.push(ch);
             else
             {
-                if (c == ')')
+                if (ch == ')')
                     while(true)
                     {
                         char lastStackl = stack.get();
@@ -53,7 +53,7 @@
                         if (prioritet(lastStackl) >= p)
                             outof.append(string(1,lastStackl));
                     }
-                    stack.push(c);
+                    stack.push(ch);
                 }
             }
     }
@@ -83,11 +83,11 @@ int eval(string pst)
     TStack<int> stack;
     for (int i = 0; i < pst.size(); i++)
     {
-        char c = pst[i];
-        int p = prioritet(c);
+        char ch = pst[i];
+        int p = prioritet(ch);
     } 
         if ( p == -1)
-            stack.push(c - 48);
+            stack.push(ch - 48);
         else
         {
             int  num1=stack.get(); 
@@ -96,7 +96,7 @@ int eval(string pst)
             int num2 = stack.get();
             stack.pop();
 
-            int res = calc(num2, num1, c);
+            int res = calc(num2, num1, ch);
             stack.push(res);
         }
 
