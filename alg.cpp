@@ -17,7 +17,7 @@
     }
 } 
 
-std :: string infx2pstfx(std :: string inf)
+ string infx2pstfx(string inf)
 {
     TStack<char> stack;
     string of = "";
@@ -77,7 +77,7 @@ int calc(int num1, int num2, char oper)
     }
 }
 
-int eval(std :: string pst)
+int eval(string pst)
 {
     TStack<int> stack;
     for (int i = 0; i < pst.size(); i++)
