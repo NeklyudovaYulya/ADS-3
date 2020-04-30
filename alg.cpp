@@ -27,7 +27,7 @@
         char ch = inf[i];
         int prioritet = setPrioritet(ch);
 
-        if (p == -1)
+        if (prioritet == -1)
             outof.append( string(1,ch) );
         else
             if( stack.isEmpty() || prioritet == 0 || prioritet > setPrioritet( stack.get()))
@@ -50,7 +50,7 @@
                     {
                         char lastStackl = stack.get();
                         stack.pop();
-                        if (setPrioritet(lastStackl) >= p)
+                        if (setPrioritet(lastStackl) >= prioritet)
                             outof.append(string(1,lastStackl));
                     }
                     stack.push(ch);
@@ -66,9 +66,9 @@
     return outof;
 }
 
-int calc(int num1, int num2, char oper)
+int calculate(int num1, int num2, char operation)
 {
-    switch (oper)
+    switch (operation)
     {
     case '+': return num1 + num2;
     case '-': return num1 - num2;
@@ -96,7 +96,7 @@ int eval(string pst)
             int num2 = stack.get();
             stack.pop();
 
-            int result = calc(num2, num1, ch);
+            int result = calculate(num2, num1, ch);
             stack.push(result);
         }
 
