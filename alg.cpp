@@ -21,16 +21,16 @@
  string infx2pstfx(string inf)
 {
     TStack<char> stack;
-    string of = "";
+    string outof = "";
     for (int i = 0; i < inf.size(); i++)
     {
         char c = inf[i];
         int p = prioritet(c);
 
         if (p == -1)
-            of.append(string(1,c));
+            of.append( string(1,c) );
         else
-            if( stack.isEmpty() || p == 0 || p > prioritet(stack.get()))
+            if( stack.isEmpty() || p == 0 || p > prioritet( stack.get()))
                 stack.push(c);
             else
             {
@@ -63,7 +63,7 @@
         stack.pop();
         of.append(string(1,lastStackl));
     }
-    return of;
+    return outof;
 }
 
 int calc(int num1, int num2, char oper)
