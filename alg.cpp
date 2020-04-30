@@ -28,7 +28,7 @@
         int p = prioritet(c);
 
         if (p == -1)
-            of.append( string(1,c) );
+            outof.append( string(1,c) );
         else
             if( stack.isEmpty() || p == 0 || p > prioritet( stack.get()))
                 stack.push(c);
@@ -40,7 +40,7 @@
                         char lastStackl = stack.get();
                         stack.pop();
                         if (lastStackl != '(')
-                            of.append(string(1,lastStackl));
+                            outof.append(string(1,lastStackl));
                         else
                             break;
                             }
@@ -51,7 +51,7 @@
                         char lastStackl = stack.get();
                         stack.pop();
                         if (prioritet(lastStackl) >= p)
-                            of.append(string(1,lastStackl));
+                            outof.append(string(1,lastStackl));
                     }
                     stack.push(c);
                 }
@@ -61,7 +61,7 @@
     {
         char lastStackl = stack.get();
         stack.pop();
-        of.append(string(1,lastStackl));
+        outof.append(string(1,lastStackl));
     }
     return outof;
 }
