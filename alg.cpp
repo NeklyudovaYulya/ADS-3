@@ -82,10 +82,10 @@ int eval(string pst)
 {
     TStack<int> stack;
     for (int i = 0; i < pst.size(); i++)
-    {
+    
         char ch = pst[i];
         int prioritet = setPrioritet(ch);
-    } 
+   
         if ( prioritet == -1)
             stack.push(ch - 48);
         else
