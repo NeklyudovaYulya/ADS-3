@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "tstack.h"
 
  using namespace std;
@@ -29,7 +30,7 @@
         if (p == -1)
             of.append(string(1,c));
         else
-            if(stack.isEmpty() || p == 0 || p > prioritet(stack.get()))
+            if( stack.isEmpty() || p == 0 || p > prioritet(stack.get()))
                 stack.push(c);
             else
             {
