@@ -4,7 +4,7 @@
 
  using namespace std;
  
- int prioritet(char ch)
+ int setPrioritet(char ch)
  {
     switch (ch)
     {
@@ -25,12 +25,12 @@
     for (int i = 0; i < inf.size(); i++)
     {
         char ch = inf[i];
-        int p = prioritet(ch);
+        int prioritet = setPrioritet(ch);
 
         if (p == -1)
             outof.append( string(1,ch) );
         else
-            if( stack.isEmpty() || p == 0 || p > prioritet( stack.get()))
+            if( stack.isEmpty() || prioritet == 0 || prioritet > setPrioritet( stack.get()))
                 stack.push(ch);
             else
             {
@@ -50,7 +50,7 @@
                     {
                         char lastStackl = stack.get();
                         stack.pop();
-                        if (prioritet(lastStackl) >= p)
+                        if (setPrioritet(lastStackl) >= p)
                             outof.append(string(1,lastStackl));
                     }
                     stack.push(ch);
@@ -84,9 +84,9 @@ int eval(string pst)
     for (int i = 0; i < pst.size(); i++)
     {
         char ch = pst[i];
-        int p = prioritet(ch);
+        int prioritet = setPrioritet(ch);
     } 
-        if ( p == -1)
+        if ( prioritet == -1)
             stack.push(ch - 48);
         else
         {
@@ -96,8 +96,8 @@ int eval(string pst)
             int num2 = stack.get();
             stack.pop();
 
-            int res = calc(num2, num1, ch);
-            stack.push(res);
+            int result = calc(num2, num1, ch);
+            stack.push(result);
         }
 
     }
